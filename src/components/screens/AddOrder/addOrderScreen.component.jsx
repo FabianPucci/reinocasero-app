@@ -2,10 +2,10 @@ import { View } from "react-native";
 import React, { useState } from "react";
 import InputAndHour from "../../molecules/InputAndHour/inputAndHour.component";
 import styles from "./addOrderScreen.style";
-import { Button } from "native-base";
 import AddMenuItem from "../../molecules/AddMenuItem/addMenuItem.component";
 import Subtitle from "../../atoms/Subtitle/subtitle.component";
 import { DateTimePickerAndroid } from "@react-native-community/datetimepicker";
+import Title from "../../atoms/Title/title.component";
 
 const AddOrderScreen = () => {
   const [dateValue, setDateValue] = useState(new Date());
@@ -51,6 +51,7 @@ const AddOrderScreen = () => {
         />
         <AddMenuItem />
       </View>
+      <Title style={styles.title} text="texto pasado x prop" />
     </View>
   );
 };
