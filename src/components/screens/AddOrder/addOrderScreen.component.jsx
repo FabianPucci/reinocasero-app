@@ -11,7 +11,6 @@ const AddOrderScreen = () => {
   const [dateValue, setDateValue] = useState(new Date());
   const [inputValue, setInputValue] = useState("");
   const [menues, setMenues] = useState([]);
-  const [hourText, setHourText] = useState("empty");
 
   const handleDate = () => {
     DateTimePickerAndroid.open({
@@ -23,14 +22,12 @@ const AddOrderScreen = () => {
       onChange,
     });
   };
+  const getDeliveryTime = () => {
+    return dateValue.getHours() + ":" + dateValue.getMinutes();
+  };
 
   const onChange = (event, selectedDate) => {
-    const currentDate = selectedDate;
-    setDateValue(currentDate);
-
-    const tempDate = new Date(currentDate);
-    const finalTime = tempDate.getHours() + ":" + tempDate.getMinutes();
-    setHourText(finalTime);
+    setDateValue(selectedDate);
   };
 
   const handleInput = (text) => {
@@ -47,7 +44,9 @@ const AddOrderScreen = () => {
           onChangeText={handleInput}
         />
         <Subtitle
-          text={`${menues.length} menúes agregados para las ${hourText}`}
+          text={`${
+            menues.length
+          } menúes agregados para las ${getDeliveryTime()}`}
         />
         <AddMenuItem />
       </View>
